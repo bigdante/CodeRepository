@@ -1,0 +1,2 @@
+如果遇到Unable to establish SSL connection.
+在wget后面加上：--no-check-certificate

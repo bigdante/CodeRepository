@@ -1,0 +1,63 @@
+下载conda
+ wget --user-agent="Mozilla" https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+ 否则403
+1.安装conda
+    bash Anaconda3-2022.05-Linux-x86_64.sh
+安装结束后，配置bash，将Anaconda添加到用户环境变量中
+    vim ~/.bashrc
+添加下面内容
+#这里写anaconda的安装路径
+    export PATH="/xll/anaconda3/bin:$PATH"
+退出编辑，并执行
+    source ~/.bashrc
+
+为了加速安装，配置国内镜像
+conda config --set show_channel_urls yes
+先生成了condarc，进行编辑
+vim ~/.condarc
+加入：
+channels:
+  - defaults
+show_channel_urls: true
+channel_alias: https://mirrors.bfsu.edu.cn/anaconda
+default_channels:
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/main
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/free
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/r
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/pro
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  msys2: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  menpo: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.bfsu.edu.cn/anaconda/cloud
+
+在命令行下
+conda create -n rnaseq   #创建conda小环境 - -n 用来指定环境的名称
+conda create -n database python=3.7.3    #指定环境中需要带的python的版本
+conda activate rnaseq     # 启动小环境
+conda deactivate           #退出小环境
+
+conda env list  / conda info --env    #查看共有多少个小环境
+conda remove -n python --all     #删除conda小环境
+
+3.环境重命名，其实就是拷贝加删除
+conda create -n tf --clone rcnn #把环境 rcnn 重命名成 tf
+conda remove -n rcnn --all
+
+4.更改envs的路径，在～/.condarc添加
+envs_dirs:
+  - /zhangpai22/envs
+
+
+conda config --remove channels
+conda config --show channels
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+
+
+pip install xxx -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+-i https://pypi.tuna.tsinghua.edu.cn/simple

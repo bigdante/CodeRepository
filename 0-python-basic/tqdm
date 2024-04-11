@@ -1,0 +1,26 @@
+def thinking_animation(stop_event: threading.Event):
+    """
+        显示旋转的进度条
+    :param stop_event:
+    :return:
+    """
+    start_time = time.time()
+    animation_chars = ['-', '\\', '|', '/']
+    idx = 0
+    while not stop_event.is_set():
+        elapsed_time = int(time.time() - start_time)
+        print(f"\rThinking {animation_chars[idx % len(animation_chars)]}... Elapsed time: {elapsed_time}s ", end="")
+        idx += 1
+        time.sleep(0.5)
+
+
+def make_chat_request_with_thinking(message, func: Callable):
+    stop_event = threading.Event()
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        thinking_thread = executor.submit(thinking_animation, stop_event)
+        answer_future = executor.submit(func, message)
+        answer = answer_future.result()
+        stop_event.set()
+    print("\r", end="")
+    sys.stdout.flush()
+    return answer

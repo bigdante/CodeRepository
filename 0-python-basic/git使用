@@ -1,0 +1,56 @@
+linux下：
+1.git命令安装
+
+2.git命令的使用
+    git config --global user.name 用户名 设置用户签名
+    git config --global user.email 邮箱 设置用户签名
+    区分操作者，不设置在上传代码时候会出错，会保存在.gitconfig中，全局就一个，首次使用时候设置，和其他账号无关，随便设置
+
+    git init 初始化本地库
+    git branch -v 查看分支
+    git status 查看本地库状态
+
+    git add 文件名   添加到暂存区（git rm --cache 文件名，可以将文件名从缓存区删除）
+    git commit -m "日志信息" 文件名 提交到本地库
+
+    git reflog 查看历史记录
+    git reset --hard 版本号  版本穿梭
+    -----------------------------------
+    git branch 分支名 创建分支
+    git checkout 分支名 切换分支
+    git merge 分支名 把指定分支合并到当前分支
+
+    ------------------------------------
+    git remote -v 查看远程库
+    git remote add origin https://github.com/bigdante/neptune.git 创建远程库对别名为origin
+
+    ------------------------------------
+    git push origin master 将本地master分支推送到远程的origin
+    git pull origin master 将远程origin的master分支的代码拉取到当前到分支
+3.git和GitHub的操作
+    1）在Linux下，文件进行推送
+        首先创建git
+        echo "# test" >> README.md
+        git init
+        git add README.md
+        git commit -m "first commit"
+        //
+        git branch -M main
+        git remote add origin https://github.com/bigdante/neptune.git
+        git push -u origin main
+    2) pull
+
+    3）fork
+       如果其他的用户fork了代码，则如果要提交给原来的库，点击pull request。则原来的库就可以收到信息，并且如果merge到自己的库中。
+4.遇到问题
+    1）如果pull时候，fatal: refusing to merge unrelated histories，代表版本不一致
+    git pull origin main --allow-unrelated-histories
+    push也同理解决
+    2）error: The following untracked working tree files would be overwritten by merge:
+    git clean -d -fx #但是这个命令会清空当前目录中的所有文件，因为这些文件开始就在本地的git中，GitHub并没有跟踪到。
+    3) HTTP/2 stream 1 was not closed cleanly before end of the underlying stream
+    git config --global http.version HTTP/1.1
+
+
+
+

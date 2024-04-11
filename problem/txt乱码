@@ -1,0 +1,2 @@
+txt从windows拷贝过来出现打不开，或者乱码情况，命令行输入
+iconv -f GB18030 -t utf-8 1998-01-105-带 音.txt > B.txt

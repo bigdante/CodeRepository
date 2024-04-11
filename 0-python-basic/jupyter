@@ -1,0 +1,10 @@
+安装：
+pip install jupyter
+命令行启动：
+jupyter-notebook
+
+如果遇到
+ __new__() missing 1 required positional argument: 'exemplar'
+这是jupyter和python的版本不匹配问题
+
+安装python==3.6.1

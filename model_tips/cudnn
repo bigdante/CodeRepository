@@ -1,0 +1,17 @@
+cuDNN使用非确定性算法，并且可以使用
+torch.backends.cudnn.enabled = False来进行禁用
+
+如果设置为torch.backends.cudnn.enabled =True，
+说明设置为使用使用非确定性算法
+然后再设置：torch.backends.cudnn.benchmark = true
+那么cuDNN使用的非确定性算法就会自动寻找最适合当前配置的高效算法，来达到优化运行效率的问题
+所以我们经常看见在代码开始出两者同时设置：
+torch.backends.cudnn.enabled = True
+torch.backends.cudnn.benchmark = True
+
+一般来讲，应该遵循以下准则：
+如果网络的输入数据维度或类型上变化不大，设置  torch.backends.cudnn.benchmark = true  可以增加运行效率；
+如果网络的输入数据在每次 iteration 都变化的话，会导致 cnDNN 每次都会去寻找一遍最优配置，这样反而会降低运行效率。
+
+
+

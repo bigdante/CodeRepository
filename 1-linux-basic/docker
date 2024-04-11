@@ -1,0 +1,12 @@
+docker pull
+
+docker load < myimage.tar
+docker save myimage > myimage.tar
+
+volume=/workspace/xll/analysis_kg/versions/v7/train/ckpt/vicuna-7b-v1.5/checkpoint-23600
+chmod 777 $volume
+docker run --gpus '"device=6"' --shm-size 1g -p 8080:80 -v $volume:/data ghcr.io/huggingface/text-generation-inference:1.1.1 --model-id /data --max-total-tokens 2048 &
+
+docker ps -a，ps只能是当前的，-a可以看到之前的停止的
+
+docker stop id或者name

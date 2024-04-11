@@ -1,0 +1,22 @@
+OPTIONS_NCCL="NCCL_DEBUG=info NCCL_IB_DISABLE=0 NCCL_NET_GDR_LEVEL=2"
+
+这是一个环境变量，用于配置NCCL（Nvidia Collective Communications Library）库的行为。具体解释如下：
+
+OPTIONS_NCCL：环境变量名称。
+"NCCL_DEBUG=info NCCL_IB_DISABLE=0 NCCL_NET_GDR_LEVEL=2"：环境变量的值，即NCCL库的选项。
+具体选项含义如下：
+
+NCCL_DEBUG=info：设置NCCL库的调试级别为“info”，可以输出更详细的日志信息。
+NCCL_IB_DISABLE=0：禁用IB（Infiniband）设备通信，即开启IB支持。
+NCCL_NET_GDR_LEVEL=2：设置NCCL库的GDR（GPU Direct RDMA）级别为“2”，可以提高GPU之间的通信速度。
+
+综上，这个环境变量的作用是为NCCL库设置一些选项，以优化GPU之间的通信性能，并提供更详细的日志信息以便调试。
+
+Deepspeed是一个由微软开发的深度学习训练优化库，它可以显著提高分布式训练的效率。
+Deepspeed可以用于任何深度学习框架，如PyTorch和TensorFlow等。
+Deepspeed通过使用低精度计算、分布式数据并行和模型并行等技术，可以加速深度学习训练。此外，Deepspeed还提供了自动混合精度训练和模型并行的功能。
+
+NCCL（Nvidia Collective Communications Library）是由Nvidia开发的一个高性能的并行通信库，它可以用于分布式GPU加速计算。
+NCCL可以在多个GPU之间传输数据，并且可以支持多种通信模式。NCCL还提供了高度优化的算法，可以显著提高数据传输速度，从而提高分布式GPU加速计算的效率。
+Deepspeed使用NCCL来实现分布式训练。具体来说，Deepspeed使用NCCL来进行跨GPU通信，包括模型参数的同步和梯度的更新。
+Deepspeed还使用NCCL来进行低精度计算和模型并行。因此，Deepspeed和NCCL是密切相关的，两者共同协作可以实现高效的分布式深度学习训练。

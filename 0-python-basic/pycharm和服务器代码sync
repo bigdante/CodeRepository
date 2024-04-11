@@ -1,0 +1,2 @@
+tools->deployment->configuration
+将deployment（服务器代码路径）和 local path（本地文件夹路径）设置好即可。

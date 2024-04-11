@@ -1,0 +1,2 @@
+kill -STOP ${P} 停止进程
+kill -CONT ${P} 继续进程

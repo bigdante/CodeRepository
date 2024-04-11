@@ -1,0 +1,24 @@
+
+ssh-keygen
+
+
+配置机器之间的免密码登陆
+ssh-copy-id -i ~/.ssh/id_rsa.pub  root@192.168.0.3
+
+mac到主机
+ssh-copy-id -p 30563 root@10.31.118.166
+
+
+192.97.85.230 node0
+192.136.14.6 node1
+192.216.99.12 node2
+
+conda activate dragon
+export CXX=g++
+export http_proxy=http://127.0.0.1:6152
+export https_proxy=http://127.0.0.1:6152
+export PATH=$PATH:/zhangpai22/envs/dragon/bin
+
+
+envs_dirs:
+  - /zhangpai22/envs

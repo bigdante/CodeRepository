@@ -1,0 +1,9 @@
+ssh root@10.31.118.166 -p 30563 -R 7892:127.0.0.1:13005
+
+ssh -L 30563:127.0.0.1:1080 root@10.31.118.166
+
+
+pip install rouge_chinese --proxy http://127.0.0.1:7892
+wget https://raw.githubusercontent.com/git/git/master/README --proxy http://127.0.0.1:7892
+
+pip install rouge_chinese nltk jieba datasets

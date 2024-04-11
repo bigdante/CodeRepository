@@ -1,0 +1,50 @@
+1.安装mongodb
+brew update
+brew install mongodb
+
+
+2.安装包下载解压后
+首先把命令写入到path中
+export PATH=${PATH}:/Users/dante/Downloads/software/mongodb/bin
+source ~/.bash_profile
+
+数据存放路径：
+sudo mkdir -p /usr/local/var/mongodb
+日志文件路径：
+sudo mkdir -p /usr/local/var/log/mongodb
+在我的计算机上：
+mongod --dbpath /Users/dante/Downloads/software/mongodb/data/mongodb --logpath /Users/dante/Downloads/software/mongodb/data/log/mongodb/mongo.log --fork
+
+mongod --dbpath /workspace/xll/mongodb/data --logpath /workspace/xll/mongodb/logs/mongodb.log --fork
+
+--dbpath 设置数据存放目录
+--logpath 设置日志存放目录
+--fork 在后台运行
+
+查看是否进程在跑
+ps aux | grep -v grep | grep mongod
+
+这个配置好之后，用studio 3T都是访问这个数据库
+
+问题：
+1.每次进入terminal都要export，否则找不到命令
+2.mongo命令没有，不知道怎么进入到mongo里面，如果不使用其他工具
+
+查询：
+db.getCollection("wikidata_entity").find({"_id":ObjectId("62526dc3f405379c0ebdb61d")})
+db.getCollection("triple_fact_v0_1_20220919").find({"evidence._ref.$id":ObjectId("624ea524c20df149ac0334b3")})
+
+{'evidence._ref.$id': ObjectId(...)}
+
+# 创建
+use page
+# 查看所有的库
+show dbs
+show tables
+dg.page.find()
+dg.page.drop()
+db.dropDatabase()
+
+
+
+在Linux上部署monogodb

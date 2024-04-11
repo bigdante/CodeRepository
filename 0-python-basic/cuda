@@ -1,0 +1,2 @@
+1.当设定了export CUDA_VISIBLE_DEVICES=${device}
+如果device=2，那么使用代码进行设定的torch.cuda.set_device(args.device)，这里的0就代表2，因为0代表序号而不是实际的显卡编号

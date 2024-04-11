@@ -1,0 +1,5 @@
+OMP: Error #15: Initializing libiomp5.dylib, but found libomp.dylib already initialized.
+
+解决：
+import os
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
